@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 export class ShoppingCartService {
 
   constructor(private db: AngularFireDatabase) { }
-
+  
   async getCart(): Promise<Observable<ShoppingCart>> {
     let cartId = await this.getOrCreateCartId();
     return this.db.object('/shopping-carts/' + cartId)

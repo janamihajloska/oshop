@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '../models/product';
-import { ShoppingCart } from '../models/shopping-cart';
-import { ShoppingCartService } from '../shopping-cart.service';
+import { ShoppingCart } from './../models/shopping-cart';
+import { ShoppingCartService } from './../shopping-cart.service';
+import { Product } from './../models/product';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'product-card',
@@ -9,18 +9,13 @@ import { ShoppingCartService } from '../shopping-cart.service';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent {
-
-  @Input('product') product : Product;
+  @Input('product') product: Product;
   @Input('show-actions') showActions = true;
-  @Input('shopping-cart') shoppingCart : ShoppingCart;
+  @Input('shopping-cart') shoppingCart: ShoppingCart; 
 
-  constructor(private shoppingCartService : ShoppingCartService) { }
+  constructor(private cartService: ShoppingCartService) { }
 
- addToCart(){
-   this.shoppingCartService.addToCart(this.product);
-  
-
- }
- 
-
+  addToCart() {
+    this.cartService.addToCart(this.product);
+  }
 }
